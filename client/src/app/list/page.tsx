@@ -2,8 +2,9 @@
 import Filter from '@/app/components/Filter'
 import ProductList from '@/app/components/ProductList'
 import { Button } from '@/components/ui/button'
+import { Skeleton } from '@/components/ui/skeleton'
 import Image from 'next/image'
-import React from 'react'
+import React, { Suspense } from 'react'
 
 export default function ListPage() {
   return (
@@ -19,7 +20,9 @@ export default function ListPage() {
           </div>
           <Filter />
           <h1 className='mt-12 text-xl font-semibold'>Shoes For You!</h1>
-          <ProductList/>
+          <Suspense fallback={<Skeleton />}>
+              <ProductList />
+          </Suspense>
       </div>
   )
 }
